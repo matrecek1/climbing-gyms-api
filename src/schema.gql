@@ -1,0 +1,63 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Boulder {
+  id: Int!
+  name: String!
+  description: String!
+
+  """A wall that the boulder resided on."""
+  wall: Wall!
+}
+
+type Wall {
+  id: Int!
+  name: String!
+  description: String!
+  angle: Int!
+  boulders: [Boulder!]!
+  gym: Gym!
+}
+
+type Gym {
+  id: Int!
+
+  """Example field (placeholder)"""
+  name: String!
+  walls: [Wall!]
+}
+
+type Query {
+  gyms: [Gym!]!
+  gym(id: Int!): Gym!
+  walls: [Wall!]!
+  wall(id: Int!): Wall!
+  boulders: [Boulder!]!
+  boulder(id: Int!): Boulder!
+}
+
+type Mutation {
+  createGym(createGymInput: CreateGymInput!): Gym!
+  removeGym(id: Int!): Gym!
+  createWall(createWallInput: CreateWallInput!): Wall!
+  removeWall(id: Int!): Wall!
+  createBoulder(createBoulderInput: CreateBoulderInput!): Boulder!
+  removeBoulder(id: Int!): Boulder!
+}
+
+input CreateGymInput {
+  """Example field (placeholder)"""
+  name: String!
+}
+
+input CreateWallInput {
+  name: String!
+  description: String!
+  angle: Int!
+}
+
+input CreateBoulderInput {
+  name: String!
+  description: String!
+}
